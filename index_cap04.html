@@ -76,6 +76,7 @@
 			</tbody>
 		</table>
 	</div>
+  <div><input type="button" value="UNDO" id="undo"></div>
 
 	<div>
 		Valor total: R$:<span id="valor-total">0</span>
@@ -84,62 +85,6 @@
 	</div>
 
 <script src="jquery-2.0.3.min.js"></script>
-<script>
-// var removeItem = function (e) {
-// 	e.preventDefault();
-// 	var self = $(this);
-// 	var atual = parseInt($('#quantidade-de-itens').text());
-// 	var novaQuantidade = atual - 1;
-// 	$('#quantidade-de-itens').text(novaQuantidade);
-// 	self.closest("tr").remove(); // closest pega o pai mais próximo - No caso aqui está pegando o tr pai
-//
-// 	// Diminuindo valor
-// 	var precoAtual = parseFloat($('#valor-total').text()),
-// 		  preco = parseFloat(self.closest("tr").find('.item-total').text());
-// 			precoFinal = precoAtual - preco;
-// 	$('#valor-total').text(precoFinal);
-//
-// };
-// var aposCarregar = function() {
-// 	var itens = $(".item-total"),
-// 		total = 0;
-// 	for (var i = 0; i < itens.length; i++) {
-// 		var item = $(itens[i]),
-// 			valor = parseFloat(item.text());
-// 			total = total + valor;
-// 	};
-// 	console.log(total);
-// 	$('#valor-total').text(total);
-// 	$('#quantidade-de-itens').text(itens.length);
-// 	$('.remove-item').click(removeItem);
-// };
-
-// Codigo refatorado
-var atualizaDados = function () {
-	var itens = $(".item-total"),
-			total = 0;
-	for (var i = 0; i < itens.length; i++) {
-		var item = $(itens[i]),
-				valor = parseFloat(item.text());
-				total = total + valor;
-	};
-	$('#valor-total').text(total);
-	$('#quantidade-de-itens').text(itens.length);
-}
-
-var removeItem = function (e) {
-	e.preventDefault();
-	var self = $(this);
-	self.closest("tr").remove();
-	atualizaDados();
-};
-
-var aposInicializado = function() {
-	$('.remove-item').click(removeItem);
-	atualizaDados();
-};
-$(aposInicializado);
-
-</script>
+<script src="carrinho.js"></script>
 </body>
 </html>
