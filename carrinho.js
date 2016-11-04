@@ -28,16 +28,21 @@
 // };
 
 // Codigo refatorado
+
 var atualizaDados = function () {
-	var itens = $(".item-total:visible"),
-			total = 0;
-	for (var i = 0; i < itens.length; i++) {
-		var item = $(itens[i]),
-				valor = parseFloat(item.text());
-				total = total + valor;
-	};
-	$('#valor-total').text(total);
-	$('#quantidade-de-itens').text(itens.length);
+  var carrinhos = $('.carrinho');
+  carrinhos.each(function () {
+    var carrinho = $(this);
+    var itens = carrinho.find(".item-total:visible");
+  			total = 0;
+  	for (var i = 0; i < itens.length; i++) {
+  		var item = $(itens[i]),
+  				valor = parseFloat(item.text());
+  				total = total + valor;
+  	}
+  	carrinho.find('.valor-total').text(total);
+  	carrinho.find('.quantidade-de-itens').text(itens.length);
+  });
 }
 
 var removeItem = function (e) {
@@ -48,15 +53,19 @@ var removeItem = function (e) {
 };
 
 var undo = function () {
-  $('tr:visible').removeClass('recuperado');
-  var trs = $('tr:hidden');
+  var carrinho = $(this).closest('.carrinho');
+  carrinho.find('tr:visible').removeClass('recuperado');
+
+  var trs = carrinho.find("tr:hidden");
   trs.addClass('recuperado')
      .show();
+
+  atualizaDados();
 };
 
 var aposInicializado = function() {
 	$('.remove-item').click(removeItem);
-  $('#undo').click(undo)
+  $('.undo').click(undo)
 	atualizaDados();
 };
 $(aposInicializado);
