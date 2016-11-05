@@ -55,11 +55,9 @@ var removeItem = function (e) {
 var undo = function () {
   var carrinho = $(this).closest('.carrinho');
   carrinho.find('tr:visible').removeClass('recuperado');
-
   var trs = carrinho.find("tr:hidden");
   trs.addClass('recuperado')
      .show();
-
   atualizaDados();
 };
 
