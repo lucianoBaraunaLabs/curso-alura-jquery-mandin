@@ -82,11 +82,20 @@ var undo = function () {
 
 // Coloca efeito
 var daDestaque = function () {
+  $(this).find('.remove-item').fadeIn();
   $(this).addClass('hovering');
 }
 
 var tiraDestaque = function () {
+  $(this).find('.remove-item').fadeOut();
   $(this).removeClass('hovering');
+}
+
+// Alterna propagandas
+var alternaProgandas =  function (event) {
+  event.preventDefault()
+  $('.propaganda').toggle();
+  $('.alterna-propaganda').toggle();
 }
 
 // Inicialiaza carregando funcoes e eventos
@@ -111,6 +120,8 @@ var aposInicializado = function() {
       umaPropaganda().insertAfter($(this));
     });
     $('.carrinho tbody tr').hover(daDestaque, tiraDestaque);
+    $('#esconde-propagandas').click(alternaProgandas);
+    $('#mostra-propagandas').click(alternaProgandas);
   });
 
 };

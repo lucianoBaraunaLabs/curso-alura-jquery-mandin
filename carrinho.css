@@ -45,6 +45,10 @@ td {
   background-color: #ccc;
 }
 
+#mostra-propagandas {
+  display: none;
+}
+
 .propaganda td {
 	background: #9F0;
 	padding: 1em 0.5em;
@@ -62,7 +66,7 @@ td {
 	text-decoration: none;
 	text-transform: uppercase;
 
-	display: inline-block;
+	display: none;
 	padding: 0.5em;
 }
 
