@@ -29,6 +29,25 @@
 
 // Codigo refatorado
 
+// Criando propagandas
+var umaPropaganda = function () {
+  var propagandas = ["O qua acha de comprar uma motocicleta ?",
+                      "O que acha de comprar um lancha?",
+                      "O que acha de comprar um bicileta?",
+                      "O que acha de comprar um carro?"
+                    ];
+  var posicao = Math.floor(propagandas.length * Math.random());
+  var texto = propagandas[posicao];
+  // Criando a tag
+  var tr = $('<tr>').addClass('propaganda')
+                    .append("<td>");
+  // busca a tag criada e coloca o texto dentro
+  tr.find("td").attr('colspan', '6')
+              .text(texto);
+  return tr
+}
+
+// Atualizando valores
 var atualizaDados = function () {
   var carrinhos = $('.carrinho');
   carrinhos.each(function () {
@@ -62,8 +81,26 @@ var undo = function () {
 };
 
 var aposInicializado = function() {
-	$('.remove-item').click(removeItem);
+  atualizaDados();
   $('.undo').click(undo)
-	atualizaDados();
+	$('.remove-item').click(removeItem);
+  // Forma para selecionar a terceira linha de cada carrinho
+  $('.carrinho').each(function () {
+    // $(this).find('tr').each(function (i) {
+    //   if (i % 3 == 0) {
+    //     if(i != 0) {
+    //       var terceiraLinha = $(this);
+    //       console.log();
+    //       terceiraLinha.append().text('opa');
+    //       umaPropaganda().insertAfter($(this));
+    //     }
+    //   }
+    // })
+    // Forma otimizada
+    $(this).find('tr:nth-child(3n)').each(function (i) {
+      umaPropaganda().insertAfter($(this));
+    })
+  });
+
 };
 $(aposInicializado);
