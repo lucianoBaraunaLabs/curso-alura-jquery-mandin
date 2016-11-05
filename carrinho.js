@@ -80,6 +80,16 @@ var undo = function () {
   atualizaDados();
 };
 
+// Coloca efeito
+var daDestaque = function () {
+  $(this).addClass('hovering');
+}
+
+var tiraDestaque = function () {
+  $(this).removeClass('hovering');
+}
+
+// Inicialiaza carregando funcoes e eventos
 var aposInicializado = function() {
   atualizaDados();
   $('.undo').click(undo)
@@ -99,7 +109,8 @@ var aposInicializado = function() {
     // Forma otimizada
     $(this).find('tr:nth-child(3n)').each(function (i) {
       umaPropaganda().insertAfter($(this));
-    })
+    });
+    $('.carrinho tbody tr').hover(daDestaque, tiraDestaque);
   });
 
 };
